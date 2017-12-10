@@ -1,0 +1,87 @@
+delimiter $$
+
+CREATE DATABASE `arcoverflow` /*!40100 DEFAULT CHARACTER SET utf8 */$$
+
+delimiter $$
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reputation` int(11) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `display_name` varchar(45) DEFAULT NULL,
+  `last_access_date` datetime DEFAULT NULL,
+  `website_url` varchar(45) DEFAULT NULL,
+  `location` varchar(45) DEFAULT NULL,
+  `about_me` text,
+  `views` int(11) DEFAULT NULL,
+  `up_votes` int(11) DEFAULT NULL,
+  `down_votes` int(11) DEFAULT NULL,
+  `profile_image_url` varchar(45) DEFAULT NULL,
+  `email_hash` varchar(45) DEFAULT NULL,
+  `account_id` varchar(45) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `posts` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_type_id` int(11) DEFAULT NULL,
+  `accepted_answer_id` int(11) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `creation_date` datetime NOT NULL,
+  `deletion_date` datetime DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `view_count` int(11) DEFAULT NULL,
+  `owner_user_id` int(11) NOT NULL,
+  `owner_display_name` varchar(45) DEFAULT NULL,
+  `latest_editor_user_id` int(11) DEFAULT NULL,
+  `latest_editor_display_name` varchar(45) DEFAULT NULL,
+  `last_edit_date` datetime DEFAULT NULL,
+  `last_activity_date` datetime DEFAULT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `tags` text,
+  `answer_count` int(11) DEFAULT NULL,
+  `comment_count` int(11) DEFAULT NULL,
+  `favorite_count` int(11) DEFAULT NULL,
+  `closed_date` int(11) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `text` text,
+  `creation_date` datetime DEFAULT NULL,
+  `user_display_name` varchar(45) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `badges` (
+  `badge_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `class` int(11) DEFAULT NULL,
+  PRIMARY KEY (`badge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `votes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) DEFAULT NULL,
+  `vote_type_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `creation_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8$$

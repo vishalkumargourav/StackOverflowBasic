@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="ds1" destroy-method="close"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver" />
+        <property name="url" value="jdbc:jtds:sqlserver://dbcore1.jupiter.c.ia55.net:1433/sandbox" />
+        <property name="username" value="Hackathon" />
+        <property name="password" value="@Dnp9juL" />
+        <property name="applicationName" value="ArcTrace" />
+        <property name="maxActive" value="5" />
+        <property name="initialSize" value="2" />
+    </bean>
+
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ds" />
+    </bean>
+</beans>
